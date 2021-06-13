@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="bb51b8d592dc4adf9127b043375a40e5" Name="Diagram1">
+        <EntityTypeShape EntityType="GaragemDBModel1.TB_CARRO" Width="1.5" PointX="6.625" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="GaragemDBModel1.TB_CLIENTE" Width="1.5" PointX="6.625" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="GaragemDBModel1.TB_FUNCIONARIO" Width="1.5" PointX="6.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="GaragemDBModel1.TB_Venda" Width="1.5" PointX="1.125" PointY="2.75" IsExpanded="true" />
+        <AssociationConnector Association="GaragemDBModel1.FK__TB_Venda__Carro__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="GaragemDBModel1.FK__TB_Venda__Client__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="GaragemDBModel1.FK__TB_Venda__Funcio__2F10007B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

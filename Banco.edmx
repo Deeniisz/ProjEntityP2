@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="GaragemDBModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_CARRO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Marca" Type="varchar" MaxLength="50" />
+          <Property Name="Modelo" Type="varchar" MaxLength="50" />
+          <Property Name="Ano" Type="varchar" MaxLength="50" />
+          <Property Name="Renavam" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Telefone" Type="varchar" MaxLength="50" />
+          <Property Name="Endereco" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="TB_FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Nome" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" />
+          <Property Name="Telefone" Type="varchar" MaxLength="50" />
+          <Property Name="Endereco" Type="varchar" MaxLength="100" />
+          <Property Name="Salario" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="TB_Venda">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Carro" Type="varchar" MaxLength="50" />
+          <Property Name="Cliente" Type="varchar" MaxLength="50" />
+          <Property Name="Funcionario" Type="varchar" MaxLength="50" />
+          <Property Name="Descricao" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK__TB_Venda__Carro__2D27B809">
+          <End Role="TB_CARRO" Type="Self.TB_CARRO" Multiplicity="0..1" />
+          <End Role="TB_Venda" Type="Self.TB_Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CARRO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TB_Venda">
+              <PropertyRef Name="Carro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Venda__Client__2E1BDC42">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="0..1" />
+          <End Role="TB_Venda" Type="Self.TB_Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TB_Venda">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Venda__Funcio__2F10007B">
+          <End Role="TB_FUNCIONARIO" Type="Self.TB_FUNCIONARIO" Multiplicity="0..1" />
+          <End Role="TB_Venda" Type="Self.TB_Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FUNCIONARIO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TB_Venda">
+              <PropertyRef Name="Funcionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GaragemDBModel1StoreContainer">
+          <EntitySet Name="TB_CARRO" EntityType="Self.TB_CARRO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_CLIENTE" EntityType="Self.TB_CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_FUNCIONARIO" EntityType="Self.TB_FUNCIONARIO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_Venda" EntityType="Self.TB_Venda" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TB_Venda__Carro__2D27B809" Association="Self.FK__TB_Venda__Carro__2D27B809">
+            <End Role="TB_CARRO" EntitySet="TB_CARRO" />
+            <End Role="TB_Venda" EntitySet="TB_Venda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Venda__Client__2E1BDC42" Association="Self.FK__TB_Venda__Client__2E1BDC42">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_Venda" EntitySet="TB_Venda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Venda__Funcio__2F10007B" Association="Self.FK__TB_Venda__Funcio__2F10007B">
+            <End Role="TB_FUNCIONARIO" EntitySet="TB_FUNCIONARIO" />
+            <End Role="TB_Venda" EntitySet="TB_Venda" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="GaragemDBModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="TB_CARRO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Marca" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Modelo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Ano" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Renavam" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Venda" Relationship="Self.FK__TB_Venda__Carro__2D27B809" FromRole="TB_CARRO" ToRole="TB_Venda" />
+        </EntityType>
+        <EntityType Name="TB_CLIENTE">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Endereco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Venda" Relationship="Self.FK__TB_Venda__Client__2E1BDC42" FromRole="TB_CLIENTE" ToRole="TB_Venda" />
+        </EntityType>
+        <EntityType Name="TB_FUNCIONARIO">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Endereco" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Salario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_Venda" Relationship="Self.FK__TB_Venda__Funcio__2F10007B" FromRole="TB_FUNCIONARIO" ToRole="TB_Venda" />
+        </EntityType>
+        <EntityType Name="TB_Venda">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Carro" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Cliente" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Funcionario" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_CARRO" Relationship="Self.FK__TB_Venda__Carro__2D27B809" FromRole="TB_Venda" ToRole="TB_CARRO" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="Self.FK__TB_Venda__Client__2E1BDC42" FromRole="TB_Venda" ToRole="TB_CLIENTE" />
+          <NavigationProperty Name="TB_FUNCIONARIO" Relationship="Self.FK__TB_Venda__Funcio__2F10007B" FromRole="TB_Venda" ToRole="TB_FUNCIONARIO" />
+        </EntityType>
+        <Association Name="FK__TB_Venda__Carro__2D27B809">
+          <End Role="TB_CARRO" Type="Self.TB_CARRO" Multiplicity="0..1" />
+          <End Role="TB_Venda" Type="Self.TB_Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CARRO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TB_Venda">
+              <PropertyRef Name="Carro" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Venda__Client__2E1BDC42">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="0..1" />
+          <End Role="TB_Venda" Type="Self.TB_Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TB_Venda">
+              <PropertyRef Name="Cliente" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_Venda__Funcio__2F10007B">
+          <End Role="TB_FUNCIONARIO" Type="Self.TB_FUNCIONARIO" Multiplicity="0..1" />
+          <End Role="TB_Venda" Type="Self.TB_Venda" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_FUNCIONARIO">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TB_Venda">
+              <PropertyRef Name="Funcionario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="GaragemDBEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_CARRO" EntityType="Self.TB_CARRO" />
+          <EntitySet Name="TB_CLIENTE" EntityType="Self.TB_CLIENTE" />
+          <EntitySet Name="TB_FUNCIONARIO" EntityType="Self.TB_FUNCIONARIO" />
+          <EntitySet Name="TB_Venda" EntityType="Self.TB_Venda" />
+          <AssociationSet Name="FK__TB_Venda__Carro__2D27B809" Association="Self.FK__TB_Venda__Carro__2D27B809">
+            <End Role="TB_CARRO" EntitySet="TB_CARRO" />
+            <End Role="TB_Venda" EntitySet="TB_Venda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Venda__Client__2E1BDC42" Association="Self.FK__TB_Venda__Client__2E1BDC42">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_Venda" EntitySet="TB_Venda" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_Venda__Funcio__2F10007B" Association="Self.FK__TB_Venda__Funcio__2F10007B">
+            <End Role="TB_FUNCIONARIO" EntitySet="TB_FUNCIONARIO" />
+            <End Role="TB_Venda" EntitySet="TB_Venda" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="GaragemDBModel1StoreContainer" CdmEntityContainer="GaragemDBEntities1">
+          <EntitySetMapping Name="TB_CARRO">
+            <EntityTypeMapping TypeName="GaragemDBModel1.TB_CARRO">
+              <MappingFragment StoreEntitySet="TB_CARRO">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Marca" ColumnName="Marca" />
+                <ScalarProperty Name="Modelo" ColumnName="Modelo" />
+                <ScalarProperty Name="Ano" ColumnName="Ano" />
+                <ScalarProperty Name="Renavam" ColumnName="Renavam" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_CLIENTE">
+            <EntityTypeMapping TypeName="GaragemDBModel1.TB_CLIENTE">
+              <MappingFragment StoreEntitySet="TB_CLIENTE">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_FUNCIONARIO">
+            <EntityTypeMapping TypeName="GaragemDBModel1.TB_FUNCIONARIO">
+              <MappingFragment StoreEntitySet="TB_FUNCIONARIO">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nome" ColumnName="Nome" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefone" ColumnName="Telefone" />
+                <ScalarProperty Name="Endereco" ColumnName="Endereco" />
+                <ScalarProperty Name="Salario" ColumnName="Salario" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_Venda">
+            <EntityTypeMapping TypeName="GaragemDBModel1.TB_Venda">
+              <MappingFragment StoreEntitySet="TB_Venda">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Carro" ColumnName="Carro" />
+                <ScalarProperty Name="Cliente" ColumnName="Cliente" />
+                <ScalarProperty Name="Funcionario" ColumnName="Funcionario" />
+                <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
